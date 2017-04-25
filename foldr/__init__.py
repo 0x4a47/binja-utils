@@ -18,7 +18,7 @@ def getLastFunctionBlock(bv):
     lfunc = bv.functions[len(bv.functions)-1]
     bn.log.log(2, "Last function is: " + str(lfunc.name))
     blocks = lfunc.basic_blocks
-    bigblock = blocks[0] #default to the first block
+    bigblock = blocks[len(blocks)-len(blocks)] #default to the first block
     #sort the blocks and store the largest in the bigblock
     for i in range(0, len(blocks)):
         if blocks[i].start > bigblock.start:
@@ -39,8 +39,8 @@ def createProcedure(bv):
     bv.create_user_function(last_block_addr_int)
 
 def createAllProcedures(bv):
-    for i in range(0,5): #index out of range...
-            time.sleep(1)
+    for i in range(0,100): #index out of range...
+            #time.sleep(1)
             createProcedure(bv)
 
 
